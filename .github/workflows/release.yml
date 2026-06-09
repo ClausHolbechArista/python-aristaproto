@@ -1,15 +1,13 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - main
-    tags:
-      - '**'
+  release:
+    types:
+      - published
 
 jobs:
   publish_aristaproto:
-    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/lib-v')
+    if: github.repository == 'aristanetworks/python-aristaproto'
     name: Publish aristaproto to PyPI
     runs-on: ubuntu-latest
 
